@@ -17,6 +17,12 @@ namespace AdressBook
             InitializeComponent();
             
         }
+        long depId = -1;
+        public AddForm(long depId)
+        {
+            InitializeComponent();
+            this.depId = depId;
+        }
 
         private void label6_Click(object sender, EventArgs e)
         {
@@ -26,9 +32,14 @@ namespace AdressBook
         private void AddForm_Load(object sender, EventArgs e)
         {
             Database.getDeps();
+            
             depCombo.DataSource = Database.DepTable;
             depCombo.DisplayMember = "name";
             depCombo.ValueMember = "id_department";
+            if (depId != -1)
+            {
+                depCombo.SelectedValue = depId;
+            }
             Database.getRanks();
             rankCombo.DataSource = Database.RankTable;
             rankCombo.DisplayMember = "rank_name";
@@ -56,6 +67,8 @@ namespace AdressBook
                 {
                     MessageBox.Show("не удалось добавить");
                 }
+                Database.getUsers();
+                this.Close();
             }
             else
             {

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace AdressBook
 {
+
     public partial class MainForm : Form
     {
         bool isAdmin = false;
@@ -172,20 +173,33 @@ namespace AdressBook
         {
             if (userView != null)
             {
-                splitContainer2.Panel2.Controls.Remove(userView);
+                //splitContainer2.Panel2.Controls.Remove(userView);
+                this.Controls.Remove(userView);
             }
-            
+
         }
 
         public void ShowInfo(long id,Point location)
         {
+            
+            //Database.FilterByDepId(id);
+            //userView = new UserView(isAdmin);
+            //Point screen = pictureBox1.PointToScreen(location);
+            //Point actual = splitContainer2.Panel2.PointToClient(screen);
+            //userView.Location = actual;
+            //userView.Visible = true;
+            //userView.depId = id;
+            //splitContainer2.Panel2.Controls.Add(userView);
+            //userView.BringToFront();
+
             Database.FilterByDepId(id);
-            userView = new UserView();
+            userView = new UserView(isAdmin);
             Point screen = pictureBox1.PointToScreen(location);
-            Point actual = splitContainer2.Panel2.PointToClient(screen);
+            Point actual = this.PointToClient(screen);
             userView.Location = actual;
             userView.Visible = true;
-            splitContainer2.Panel2.Controls.Add(userView);
+            userView.depId = id;
+            this.Controls.Add(userView);
             userView.BringToFront();
 
         }

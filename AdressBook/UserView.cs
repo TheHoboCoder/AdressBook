@@ -12,11 +12,19 @@ namespace AdressBook
 {
     public partial class UserView : UserControl
     {
-        public UserView()
+        public long depId {get;set;}
+        public UserView(bool isAdmin)
         {
             InitializeComponent();
             table.DataSource = Database.filterUser;
+            AddButton.Enabled = isAdmin;
+        }
 
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            AddForm f = new AddForm(depId);
+            f.ShowDialog();
+            
         }
     }
 }
