@@ -1,7 +1,9 @@
-﻿using MySql.Data.MySqlClient;
+﻿using AdressBook.Data;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,7 @@ namespace AdressBook
         static public DataTable DepTable = new DataTable();
         static public DataTable RankTable = new DataTable();
         static public DataTable UserTable = new DataTable();
+        static public List<BuildingEntity> BuildingData;
 
         static public DataView filterUser = new DataView(UserTable);
 
@@ -31,6 +34,7 @@ namespace AdressBook
 
                 msCommand = new MySqlCommand();
                 msCommand.Connection = msConnect;
+                msCommand.Parameters.Add("building_data", MySqlDbType.JSON);
                 msAdapter = new MySqlDataAdapter(msCommand);
                 return true;
             }
@@ -61,10 +65,19 @@ namespace AdressBook
             }
         }
 
-        static public void addDep(string name)
+        static public bool addDep(string name,Point location)
         {
-            msCommand.CommandText = String.Format("insert into department (name) values ('{0}')",name);
-            msCommand.ExecuteNonQuery();
+            try
+            {
+                msCommand.CommandText = String.Format("insert into department (name,X,Y) values ('{0}','{1}','{2}')", name, location.X, location.Y);
+                msCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
         }
 
         static public void addRank(string name)
@@ -105,6 +118,11 @@ namespace AdressBook
             }
         }
 
+        static public void getDepData()
+        {
+
+        }
+
         static public void getUsers()
         {
             try
@@ -118,6 +136,28 @@ namespace AdressBook
                 System.Windows.Forms.MessageBox.Show(ex.ToString(), "Ошибка");
             }
         }
+
+
+        //static public void getBuildingData()
+        //{
+        //    BuildingData = new List<BuildingEntity>();
+        //    msCommand.CommandText = "SELECT * FROM buildings";
+        //    DataTable data = new DataTable();
+        //    msAdapter.Fill(data);
+        //    foreach(DataRow row in data.Rows)
+        //    {
+        //        byte[] figure_data = null;
+        //        figure_data = Encoding.UTF8.GetBytes(row["building_data"].ToString());
+        //        BuildingEntity e = new BuildingEntity();
+        //        e.building = Building.Deserialize(figure_data);
+        //        e.id = Convert.ToInt32(row["id_building"]);
+        //        BuildingData.Add(e);
+        //    }
+        //}
+
+        //static public void Add
+
+
 
 
         static public void searchByFam(string fam)

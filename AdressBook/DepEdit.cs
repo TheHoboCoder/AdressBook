@@ -12,6 +12,8 @@ namespace AdressBook
 {
     public partial class DepEdit : Form
     {
+        public Point point { get; set; }
+
         public DepEdit()
         {
             InitializeComponent();
@@ -26,9 +28,18 @@ namespace AdressBook
         {
             if (nameTxt.Text != "")
             {
-                Database.addDep(nameTxt.Text.Trim());
+                bool res = Database.addDep(nameTxt.Text.Trim(),point);
                 Database.getDeps();
-                this.Close();
+                if (res)
+                {
+                    DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+
+                }
+                
             }
         }
 

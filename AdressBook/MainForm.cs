@@ -13,6 +13,9 @@ namespace AdressBook
     public partial class MainForm : Form
     {
         bool isAdmin = false;
+        bool addingMode = false;
+        Point point = new Point();
+
         public MainForm()
         {
             InitializeComponent();
@@ -22,6 +25,7 @@ namespace AdressBook
                 this.Close();
             }
             Database.getUsers();
+            Database.getDepData();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,5 +60,47 @@ namespace AdressBook
             }
             
         }
+
+        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            point.X = e.Location.X;
+            point.Y = e.Location.Y;
+            pictureBox1.Refresh();
+
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            DepEdit ed = new DepEdit();
+            ed.point = point;
+            ed.ShowDialog();
+            if(ed.DialogResult == DialogResult.OK)
+            {
+                addingMode = false;
+            }
+        }
+
+        private void AddDep_Click(object sender, EventArgs e)
+        {
+            addingMode = !addingMode;
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            if (addingMode)
+            {
+                using (SolidBrush br = new SolidBrush(Color.Yellow))
+                {
+                    e.Graphics.FillEllipse(br, point.X - 15, point.Y - 15, 15 * 2, 15 * 2);
+                    
+                }
+            }
+        }
+            
     }
 }
