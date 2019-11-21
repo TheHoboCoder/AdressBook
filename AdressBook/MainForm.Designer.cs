@@ -30,12 +30,12 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.AddBuilding = new System.Windows.Forms.Button();
             this.AddDep = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.AddUserBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.AddBuilding = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -87,6 +87,16 @@
             this.splitContainer2.Size = new System.Drawing.Size(926, 519);
             this.splitContainer2.SplitterDistance = 47;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // AddBuilding
+            // 
+            this.AddBuilding.Location = new System.Drawing.Point(25, 3);
+            this.AddBuilding.Name = "AddBuilding";
+            this.AddBuilding.Size = new System.Drawing.Size(171, 40);
+            this.AddBuilding.TabIndex = 3;
+            this.AddBuilding.Text = "Добавить отдел";
+            this.AddBuilding.UseVisualStyleBackColor = true;
+            this.AddBuilding.Click += new System.EventHandler(this.AddBuilding_Click);
             // 
             // AddDep
             // 
@@ -145,16 +155,6 @@
             this.button2.Text = "Вход админстратором";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // AddBuilding
-            // 
-            this.AddBuilding.Location = new System.Drawing.Point(25, 3);
-            this.AddBuilding.Name = "AddBuilding";
-            this.AddBuilding.Size = new System.Drawing.Size(171, 40);
-            this.AddBuilding.TabIndex = 3;
-            this.AddBuilding.Text = "Добавить отдел";
-            this.AddBuilding.UseVisualStyleBackColor = true;
-            this.AddBuilding.Click += new System.EventHandler(this.AddBuilding_Click);
             // 
             // MainForm
             // 

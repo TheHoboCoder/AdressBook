@@ -30,6 +30,8 @@ namespace AdressBook
         Marker curMarker;
         List<Point> curPoints;
 
+        UserView userView;
+
         bool isMarkerVisible = true;
 
         public MainForm()
@@ -40,7 +42,7 @@ namespace AdressBook
                 MessageBox.Show("Ошибка подключения к базе данных");
                 this.Close();
             }
-            //Database.getUsers();
+            Database.getUsers();
             //Database.getDepData();
             Database.loadBuildingData();
         }
@@ -131,6 +133,8 @@ namespace AdressBook
                 if (!curBuilding.hitTest(p))
                 {
                     curBuilding = null;
+                    curMarker = null;
+                    CloseInfo();
                 }
                 else
                 {
@@ -139,17 +143,20 @@ namespace AdressBook
                         if (!curMarker.hitTest(p))
                         {
                             curMarker = null;
+                            CloseInfo();
                         }
                     }
                     else
                     {
                         curMarker = curBuilding.HitTestMarkers(p);
-                        if (curMarker != null) ShowInfo(curMarker.Id);
+                        if (curMarker != null) ShowInfo(curMarker.Id,curMarker.Location);
                     }
                 }
             }
             else
             {
+                curMarker = null;
+                CloseInfo();
                 foreach (Building build in Database.buildingsInfo)
                 {
 
@@ -163,11 +170,23 @@ namespace AdressBook
 
         public void CloseInfo()
         {
-
+            if (userView != null)
+            {
+                splitContainer2.Panel2.Controls.Remove(userView);
+            }
+            
         }
 
-        public void ShowInfo(long id)
+        public void ShowInfo(long id,Point location)
         {
+            Database.FilterByDepId(id);
+            userView = new UserView();
+            Point screen = pictureBox1.PointToScreen(location);
+            Point actual = splitContainer2.Panel2.PointToClient(screen);
+            userView.Location = actual;
+            userView.Visible = true;
+            splitContainer2.Panel2.Controls.Add(userView);
+            userView.BringToFront();
 
         }
 

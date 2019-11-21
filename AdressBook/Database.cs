@@ -139,7 +139,7 @@ namespace AdressBook
         {
             try
             {
-                msCommand.CommandText = "SELECT fam,name,otch,lat,lng,id_dep,id_rank FROM users";
+                msCommand.CommandText = "SELECT users.fam,users.name,users.otch,rank_t.rank_name,users.id_rank,users.id_dep,users.phone FROM users inner join rank_t on rank_t.id_rank = users.id_rank";
                 UserTable.Clear();
                 msAdapter.Fill(UserTable);
             }
@@ -201,6 +201,11 @@ namespace AdressBook
                 buildingsInfo.Add(b);
 
             }
+        }
+
+        static public void FilterByDepId(long depId)
+        {
+            filterUser.RowFilter = String.Format("id_dep = '{0}'", depId);
         }
 
         static public void searchByFam(string fam)
