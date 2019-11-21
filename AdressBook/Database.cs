@@ -23,6 +23,8 @@ namespace AdressBook
         static public DataTable UserTable = new DataTable();
         static public List<BuildingEntity> BuildingData;
 
+        static public List<Building> buildingsInfo;
+
         static public DataView filterUser = new DataView(UserTable);
 
         static public bool Connect()
@@ -65,17 +67,17 @@ namespace AdressBook
             }
         }
 
-        static public bool addDep(string name,Point location)
+        static public long addDep(string name, long buildId, Point location)
         {
             try
             {
-                msCommand.CommandText = String.Format("insert into department (name,X,Y) values ('{0}','{1}','{2}')", name, location.X, location.Y);
+                msCommand.CommandText = String.Format("insert into department (name,X,Y,id_build) values ('{0}','{1}','{2}','{3}')", name, location.X, location.Y,buildId);
                 msCommand.ExecuteNonQuery();
-                return true;
+                return msCommand.LastInsertedId;
             }
             catch (Exception ex)
             {
-                return false;
+                return -1;
             }
             
         }
@@ -99,6 +101,16 @@ namespace AdressBook
             {
                 System.Windows.Forms.MessageBox.Show(ex.ToString(), "Ошибка");
             }
+        }
+
+        static public long AddMarker(string name,long buildId,Point location)
+        {
+            return -1;
+        }
+
+        static public void DeleteMarker(int id)
+        {
+
         }
 
         static public long addUser(int depId, int rankId, string fam, string name, string otch, string email, string phone)
@@ -138,27 +150,58 @@ namespace AdressBook
         }
 
 
-        //static public void getBuildingData()
-        //{
-        //    BuildingData = new List<BuildingEntity>();
-        //    msCommand.CommandText = "SELECT * FROM buildings";
-        //    DataTable data = new DataTable();
-        //    msAdapter.Fill(data);
-        //    foreach(DataRow row in data.Rows)
-        //    {
-        //        byte[] figure_data = null;
-        //        figure_data = Encoding.UTF8.GetBytes(row["building_data"].ToString());
-        //        BuildingEntity e = new BuildingEntity();
-        //        e.building = Building.Deserialize(figure_data);
-        //        e.id = Convert.ToInt32(row["id_building"]);
-        //        BuildingData.Add(e);
-        //    }
-        //}
+        static public bool AddBuilding(Building b)
+        {
+            try
+            {
+                msCommand.Parameters["building_data"].Value = Encoding.UTF8.GetString(b.Serialize());
+                msCommand.CommandText = "Insert into buildings (name,building_data) values ('{0}',@building_data)";
+                msCommand.ExecuteNonQuery();
+                if (msCommand.LastInsertedId != -1)
+                {
+                    b.Id = msCommand.LastInsertedId;
+                    buildingsInfo.Add(b);
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString(), "Ошибка");
+                return false;
+            }
 
-        //static public void Add
+        }
 
 
+        static public void loadBuildingData()
+        {
+            buildingsInfo = new List<Building>();
+            msCommand.CommandText = "SELECT * FROM buildings";
+            DataTable data = new DataTable();
+            msAdapter.Fill(data);
+            foreach (DataRow row in data.Rows)
+            {
+                long id = Convert.ToInt64(row["id_building"]);
+                string name = row["name"].ToString();
+                byte[] figure_data  = Encoding.UTF8.GetBytes(row["building_data"].ToString());
+                Building b = new Building(id, name, figure_data);
+                DataTable data2 = new DataTable();
+                msCommand.CommandText = String.Format("SELECT * FROM department where id_build = '{0}'",id);
+                msAdapter.Fill(data2);
+                foreach (DataRow m_row in data2.Rows)
+                {
+                    Marker m = new Marker(Convert.ToInt64(m_row["id_department"]),
+                                           m_row["name"].ToString(),
+                                           new Point(Convert.ToInt32(m_row["X"]),Convert.ToInt32(m_row["Y"])));
+                    m.BuildingId = id;
+                    b.Markers.Add(m);
+                }
+               
+                buildingsInfo.Add(b);
 
+            }
+        }
 
         static public void searchByFam(string fam)
         {

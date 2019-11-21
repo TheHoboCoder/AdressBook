@@ -54,11 +54,19 @@
     <Compile Include="AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BuildAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuildAdd.Designer.cs">
+      <DependentUpon>BuildAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="Data\Building.cs" />
     <Compile Include="Data\BuildingEntity.cs" />
     <Compile Include="Data\BuildingPoint.cs" />
     <Compile Include="Data\Dep.cs" />
+    <Compile Include="Data\Marker.cs" />
+    <Compile Include="Data\PointWrapper.cs" />
     <Compile Include="DepEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +95,9 @@
     </Compile>
     <EmbeddedResource Include="AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuildAdd.resx">
+      <DependentUpon>BuildAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DepEdit.resx">
       <DependentUpon>DepEdit.cs</DependentUpon>

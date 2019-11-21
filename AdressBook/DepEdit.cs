@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdressBook.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,9 @@ namespace AdressBook
     public partial class DepEdit : Form
     {
         public Point point { get; set; }
+        public long BuilId { get; set; }
+
+        public Building b { get; set; }
 
         public DepEdit()
         {
@@ -28,17 +32,25 @@ namespace AdressBook
         {
             if (nameTxt.Text != "")
             {
-                bool res = Database.addDep(nameTxt.Text.Trim(),point);
-                Database.getDeps();
-                if (res)
+                if(b.AddMarker(nameTxt.Text.Trim(), point))
                 {
-                    DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-
+                    MessageBox.Show("Ошибка при добавлении");
                 }
+                //bool res = Database.addDep(nameTxt.Text.Trim(),point);
+                //Database.getDeps();
+                //if (res)
+                //{
+                //    DialogResult = DialogResult.OK;
+                //    this.Close();
+                //}
+                //else
+                //{
+
+                //}
                 
             }
         }
