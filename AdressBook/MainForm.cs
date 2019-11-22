@@ -48,6 +48,7 @@ namespace AdressBook
             //Database.getDepData();
             Database.loadBuildingData();
             ShowAll.Enabled = false;
+            AddDep.Enabled = AddBuilding.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -69,7 +70,8 @@ namespace AdressBook
                 form.ShowDialog();
                 if (form.DialogResult == DialogResult.OK)
                 {
-                    AddUserBtn.Visible = true;
+                    //AddUserBtn.Visible = true;
+                    AddDep.Enabled = AddBuilding.Enabled = true;
                     isAdmin = true;
                     button2.Text = "Выход";
                 }
@@ -78,7 +80,8 @@ namespace AdressBook
             {
                 button2.Text = "Вход администратором";
                 isAdmin = false;
-                AddUserBtn.Visible = false;
+                AddDep.Enabled = AddBuilding.Enabled = false;
+                //AddUserBtn.Visible = false;
             }
             
         }
@@ -337,6 +340,11 @@ namespace AdressBook
         {
             Database.getUsers();
             ShowAll.Enabled = false;
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void table_CellClick(object sender, DataGridViewCellEventArgs e)

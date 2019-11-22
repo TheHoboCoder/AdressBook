@@ -35,10 +35,10 @@
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(33, 65);
+            this.SaveBtn.Location = new System.Drawing.Point(43, 65);
             this.SaveBtn.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(347, 55);
+            this.SaveBtn.Size = new System.Drawing.Size(347, 46);
             this.SaveBtn.TabIndex = 16;
             this.SaveBtn.Text = "Сохранить";
             this.SaveBtn.UseVisualStyleBackColor = true;
@@ -57,24 +57,25 @@
             // 
             // nameTxt
             // 
-            this.nameTxt.Location = new System.Drawing.Point(244, 20);
+            this.nameTxt.Location = new System.Drawing.Point(222, 17);
             this.nameTxt.Margin = new System.Windows.Forms.Padding(20, 14, 20, 14);
             this.nameTxt.Name = "nameTxt";
-            this.nameTxt.Size = new System.Drawing.Size(183, 29);
+            this.nameTxt.Size = new System.Drawing.Size(216, 29);
             this.nameTxt.TabIndex = 14;
             // 
             // Rank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 136);
+            this.ClientSize = new System.Drawing.Size(456, 121);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameTxt);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "Rank";
-            this.Text = "Rank";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Должность";
             this.ResumeLayout(false);
             this.PerformLayout();
 

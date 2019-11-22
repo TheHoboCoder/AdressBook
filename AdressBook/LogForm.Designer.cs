@@ -37,16 +37,17 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(111, 51);
+            this.textBox2.Location = new System.Drawing.Point(112, 48);
             this.textBox2.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(180, 20);
             this.textBox2.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 51);
+            this.label2.Location = new System.Drawing.Point(24, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 7;
@@ -56,7 +57,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 21);
+            this.label1.Location = new System.Drawing.Point(24, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 6;
@@ -64,7 +65,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(111, 14);
+            this.textBox1.Location = new System.Drawing.Point(112, 14);
             this.textBox1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(180, 20);
@@ -72,7 +73,7 @@
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(47, 81);
+            this.SaveBtn.Location = new System.Drawing.Point(27, 81);
             this.SaveBtn.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(244, 43);
@@ -85,14 +86,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 130);
+            this.ClientSize = new System.Drawing.Size(312, 130);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "LogForm";
-            this.Text = "LogForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Вход";
             this.ResumeLayout(false);
             this.PerformLayout();
 

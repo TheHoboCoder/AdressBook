@@ -36,7 +36,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 9);
+            this.label1.Location = new System.Drawing.Point(15, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(157, 22);
@@ -46,18 +46,18 @@
             // 
             // nameTxt
             // 
-            this.nameTxt.Location = new System.Drawing.Point(189, 9);
+            this.nameTxt.Location = new System.Drawing.Point(189, 13);
             this.nameTxt.Margin = new System.Windows.Forms.Padding(11, 8, 11, 8);
             this.nameTxt.Name = "nameTxt";
-            this.nameTxt.Size = new System.Drawing.Size(182, 29);
+            this.nameTxt.Size = new System.Drawing.Size(221, 29);
             this.nameTxt.TabIndex = 2;
             this.nameTxt.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(41, 49);
+            this.SaveBtn.Location = new System.Drawing.Point(61, 53);
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(189, 50);
+            this.SaveBtn.Size = new System.Drawing.Size(280, 50);
             this.SaveBtn.TabIndex = 13;
             this.SaveBtn.Text = "Сохранить";
             this.SaveBtn.UseVisualStyleBackColor = true;
@@ -67,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 111);
+            this.ClientSize = new System.Drawing.Size(430, 111);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameTxt);
@@ -75,7 +75,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "DepEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DepEdit";
+            this.Text = "Отделы";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.table = new System.Windows.Forms.DataGridView();
             this.AddButton = new System.Windows.Forms.Button();
+            this.table = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
@@ -43,8 +43,18 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(404, 285);
+            this.panel1.Size = new System.Drawing.Size(490, 285);
             this.panel1.TabIndex = 0;
+            // 
+            // AddButton
+            // 
+            this.AddButton.Location = new System.Drawing.Point(14, 13);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(168, 39);
+            this.AddButton.TabIndex = 1;
+            this.AddButton.Text = "Добавить";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // table
             // 
@@ -53,18 +63,8 @@
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.table.Location = new System.Drawing.Point(14, 58);
             this.table.Name = "table";
-            this.table.Size = new System.Drawing.Size(375, 211);
+            this.table.Size = new System.Drawing.Size(461, 211);
             this.table.TabIndex = 0;
-            // 
-            // AddButton
-            // 
-            this.AddButton.Location = new System.Drawing.Point(14, 13);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(152, 39);
-            this.AddButton.TabIndex = 1;
-            this.AddButton.Text = "Добавить";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // UserView
             // 
@@ -72,7 +72,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "UserView";
-            this.Size = new System.Drawing.Size(404, 285);
+            this.Size = new System.Drawing.Size(490, 285);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
             this.ResumeLayout(false);

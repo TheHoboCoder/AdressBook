@@ -146,5 +146,8 @@
   <ItemGroup>
     <None Include="bin\Debug\source.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\карта.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
