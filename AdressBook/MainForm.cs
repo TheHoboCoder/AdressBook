@@ -28,7 +28,7 @@ namespace AdressBook
 
         Mode mode = Mode.SELECT;
         Building curBuilding;
-        Marker curMarker;
+        Marker curMarker,highlight;
         List<Point> curPoints;
 
         UserView userView;
@@ -44,8 +44,10 @@ namespace AdressBook
                 this.Close();
             }
             Database.getUsers();
+            table.DataSource = Database.UserTable;
             //Database.getDepData();
             Database.loadBuildingData();
+            ShowAll.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -277,6 +279,10 @@ namespace AdressBook
                     {
                         s.Color = Color.FromArgb(200, Color.SeaGreen);
                     }
+                    else if (m.Equals(highlight))
+                    {
+                        s.Color = Color.FromArgb(200, Color.OrangeRed);
+                    }
                     else
                     {
                         s.Color = Color.FromArgb(200,Color.LightSeaGreen);
@@ -315,6 +321,34 @@ namespace AdressBook
             point = new Point(0, 0);
             curPoints = new List<Point>();
             curPoints.Add(point);
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            if (searchTxt.Text != "")
+            {
+                Database.searchByFam(searchTxt.Text.Trim());
+                ShowAll.Enabled = true;
+                //table.DataSource =Database.fil
+            }
+        }
+
+        private void ShowAll_Click(object sender, EventArgs e)
+        {
+            Database.getUsers();
+            ShowAll.Enabled = false;
+        }
+
+        private void table_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex != -1)
+            {
+                DataGridViewRow row = table.Rows[e.RowIndex];
+                long id = Convert.ToInt64(row.Cells["id_dep"].Value);
+                highlight = Database.getMarkerById(id);
+                pictureBox1.Refresh();
+            }
+            
         }
     }
 }

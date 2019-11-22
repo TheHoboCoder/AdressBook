@@ -150,6 +150,8 @@ namespace AdressBook
         }
 
 
+        //static public 
+
         static public bool AddBuilding(Building b)
         {
             try
@@ -203,6 +205,21 @@ namespace AdressBook
             }
         }
 
+        static public Marker getMarkerById(long id)
+        {
+            foreach(Building b in buildingsInfo)
+            {
+                foreach (Marker m in b.Markers)
+                {
+                    if(m.Id ==id)
+                    {
+                        return m;
+                    }
+                }
+            }
+            return null;
+        }
+
         static public void FilterByDepId(long depId)
         {
             filterUser.RowFilter = String.Format("id_dep = '{0}'", depId);
@@ -210,7 +227,16 @@ namespace AdressBook
 
         static public void searchByFam(string fam)
         {
-            filterUser.RowFilter = String.Format("fam like '{0}*'", fam);
+            try
+            {
+                msCommand.CommandText = String.Format("SELECT users.fam,users.name,users.otch,rank_t.rank_name,users.id_rank,users.id_dep,users.phone FROM users inner join rank_t on rank_t.id_rank = users.id_rank where users.fam RLIKE '^{0}'",fam);
+                UserTable.Clear();
+                msAdapter.Fill(UserTable);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString(), "Ошибка");
+            }
         }
 
         //static public void filterBy(int rankId, int )

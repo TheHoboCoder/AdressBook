@@ -40,7 +40,6 @@
             this.depCombo = new System.Windows.Forms.ComboBox();
             this.rankCombo = new System.Windows.Forms.ComboBox();
             this.SaveBtn = new System.Windows.Forms.Button();
-            this.addDep = new System.Windows.Forms.Button();
             this.addDol = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
@@ -154,19 +153,9 @@
             this.SaveBtn.UseVisualStyleBackColor = true;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
-            // addDep
-            // 
-            this.addDep.Location = new System.Drawing.Point(355, 236);
-            this.addDep.Name = "addDep";
-            this.addDep.Size = new System.Drawing.Size(107, 30);
-            this.addDep.TabIndex = 13;
-            this.addDep.Text = "Добавить";
-            this.addDep.UseVisualStyleBackColor = true;
-            this.addDep.Click += new System.EventHandler(this.addDep_Click);
-            // 
             // addDol
             // 
-            this.addDol.Location = new System.Drawing.Point(355, 276);
+            this.addDol.Location = new System.Drawing.Point(355, 277);
             this.addDol.Name = "addDol";
             this.addDol.Size = new System.Drawing.Size(107, 30);
             this.addDol.TabIndex = 14;
@@ -209,7 +198,6 @@
             this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.addDol);
-            this.Controls.Add(this.addDep);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.rankCombo);
             this.Controls.Add(this.depCombo);
@@ -247,7 +235,6 @@
         private System.Windows.Forms.ComboBox depCombo;
         private System.Windows.Forms.ComboBox rankCombo;
         private System.Windows.Forms.Button SaveBtn;
-        private System.Windows.Forms.Button addDep;
         private System.Windows.Forms.Button addDol;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
